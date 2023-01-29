@@ -1,4 +1,4 @@
-package extend.human;
+package polymorphism.human;
 
 public class Employee extends Human {
 	private String department;
@@ -8,7 +8,7 @@ public class Employee extends Human {
 		this.department = department;
 	}
 
-	public String getEmployeeProfile() {
+	public String getProfile() {
 		String profile = "年齢は" + this.age + "です";
 		profile += "サラリーマンで、部署は" + this.department + "です";
 		return profile;
