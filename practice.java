@@ -1,9 +1,14 @@
-public class Hero {
-    private String namme;
-    private int hp, mp;
+public class Account {
+    String accountNo;
     
-    public String toString() {
-        return "勇者（名前=" + this.name
-        + "/HP" + this.hp + "/MP" + this.mp + ")";
+    public boolean equals(Object o) {
+        if(o == this) return true;
+        if(o == null) return false;
+        if(!(o instanceof Account)) return false;
+        Account r = (Account)o;
+        if(!this.accountNo.trim().equals(r.accountNo.trim())) {
+            return false;
+        }
+        return true
     }
 }
