@@ -1,12 +1,15 @@
 package study;
 
-import java.util.Objects;
-
-public class Hero {
+public class Hero implements Cloneable {
 	String name;
 	int hp;
+	String sword;
 
-	public int hadhCode() {
-		return Objects.hash(this.name, this.hp);
+	public Hero clone() {
+		Hero result = new Hero();
+		result.name = this.name;
+		result.hp = this.hp;
+		result.sword = this.sword;
+		return result;
 	}
 }
