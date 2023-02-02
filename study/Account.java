@@ -1,16 +1,28 @@
 package study;
 
-public class Account implements Comparable<Account> {
-	int number;
-	int zandaka;
+public class Account {
+	private String accountNo;
+	private int zandaka;
+	private AccountType accountType;
 
-	public int compareTo(Account obj) {
-		if(this.number < obj.number) {
-			return -1;
-		}
-		if(this.number > obj.number) {
-			return 1;
-		}
-		return 0;
+	public Account(String aNo, AccountType aType) {
+		this.accountNo = aNo;
+		this.accountType = aType;
+	}
+
+	public String getAccountNo() {
+		return accountNo;
+	}
+
+	public int getZandaka() {
+		return zandaka;
+	}
+
+	public void setZandaka(int zandaka) {
+		this.zandaka = zandaka;
+	}
+
+	public AccountType getAccounttype() {
+		return accountType;
 	}
 }
