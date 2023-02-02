@@ -1,16 +1,10 @@
 package study;
 
 public class Main {
-	public static void prints(Object a, Object b) {
-		for(int i = 0; i < (Integer)b; i++) {
-			System.out.println(a);
-		}
-	}
-
 	public static void main(String[] args) {
-		Object s = "こんにちは";
-		s = new Hero();
-		Object n = 1;
-		prints(s, n);
+		Pocket<String> p = new Pocket<>();
+		p.put("1192");
+		String s = p.get();
+		System.out.println(s);
 	}
 }
