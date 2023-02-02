@@ -1,18 +1,12 @@
 package study;
 
-public class Hero {
-	String hero;
+import java.util.Objects;
 
-	public String name;
-	
-	public boolean equals(Object o) {
-		if(o == this) return true;
-		if(o == null) return false;
-		if(!(o instanceof Hero)) return false;
-		Hero r = (Hero)o;
-		if(!this.hero.trim().equals(r.hero.trim())) {
-			return false;
-		}
-		return true;
+public class Hero {
+	String name;
+	int hp;
+
+	public int hadhCode() {
+		return Objects.hash(this.name, this.hp);
 	}
 }
