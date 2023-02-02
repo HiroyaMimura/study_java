@@ -1,7 +1,13 @@
 package study;
 
-public class Sword {
+public class Sword implements Cloneable {
 	private String name;
+
+	public Sword clone() {
+		Sword result = new Sword();
+		result.name = this.name;
+		return result;
+	}
 
 	public Sword() {
 		this.name = "";
