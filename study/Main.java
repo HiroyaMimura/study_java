@@ -2,9 +2,8 @@ package study;
 
 public class Main {
 	public static void main(String[] args) {
-		Pocket<String> p = new Pocket<>();
-		p.put("1192");
-		String s = p.get();
-		System.out.println(s);
+		Account a1 = new Account("1732050", AccountType.FUTSU);
+		System.out.println("口座番号は" + a1.getAccountNo() + "です");
+		System.out.println("口座種別は" + a1.getAccountType() + "です");
 	}
 }

@@ -22,7 +22,7 @@ public class Account {
 		this.zandaka = zandaka;
 	}
 
-	public AccountType getAccounttype() {
+	public AccountType getAccountType() {
 		return accountType;
 	}
 }
