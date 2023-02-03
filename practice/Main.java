@@ -11,6 +11,7 @@ public class Main {
 		.forEach(System.out::println);
 
 		IntPredicate f1 = x -> x % 2 == 1;
+
 		Func2 f2 = (point, name) -> {
 			return name + "さんは" + ( point > 65 ? "合格" : "不合格");
 		};
