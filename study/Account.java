@@ -1,9 +1,9 @@
 package study;
 
 public class Account {
-	private String accountNo;
-	private int zandaka;
-	private AccountType accountType;
+	 String accountNo;
+	 int zandaka;
+	 AccountType accountType;
 
 	public Account(String aNo, AccountType aType) {
 		this.accountNo = aNo;
