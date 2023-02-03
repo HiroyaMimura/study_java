@@ -1,17 +1,8 @@
 package study;
 
-public class Hero implements Cloneable {
+public class Hero {
 	String name;
 	int hp;
-	Sword sword;
-
-	public Hero clone() {
-		Hero result = new Hero();
-		result.name = this.name;
-		result.hp = this.hp;
-		result.sword = this.sword.clone();
-		return result;
-	}
 
 	public Hero() {
 		this.name = "";
@@ -21,19 +12,21 @@ public class Hero implements Cloneable {
 		this.name = name;
 	}
 
-	public Sword getSword() {
-		return this.sword;
-	}
-
-	public void setSword(Sword sword) {
-		this.sword = sword;
-	}
-
 	public String getName() {
-		return this.name;
+		return name;
 	}
 
 	public void setName(String name) {
 		this.name = name;
 	}
+
+	public int getHp() {
+		return hp;
+	}
+
+	public void setHp(int hp) {
+		this.hp = hp;
+	}
+
+
 }
