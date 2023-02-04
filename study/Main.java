@@ -1,18 +1,18 @@
 package study;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
+import java.util.TimeZone;
 
 public class Main {
 	public static void main(String[] args) throws Exception {
-		Locale loc = Locale.getDefault();
-		System.out.println(loc.getCountry() + "-" + loc.getLanguage());
-		String now = (new SimpleDateFormat()).format(new Date());
-		if(loc.getLanguage().equals("ja")) {
-			System.out.println("現在の時刻は" + now);
+		TimeZone tz = TimeZone .getDefault();
+		System .out .println("現在のタイムゾーン");
+		System.out.println(tz.getDisplayName());
+		if(tz.useDaylightTime()) {
+			System.out.println("夏時間を採用しています");
 		} else {
-			System.out.println("Current time is" + now);
+			System.out.println("夏時間を採用していません");
 		}
+		System.out.println("世界標準時間との時差は");
+		System.out.println(tz.getRawOffset() / 3600000 + "時間");
 	}
 }
