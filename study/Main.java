@@ -1,18 +1,15 @@
 package study;
 
-import java.util.TimeZone;
-
 public class Main {
 	public static void main(String[] args) throws Exception {
-		TimeZone tz = TimeZone .getDefault();
-		System .out .println("現在のタイムゾーン");
-		System.out.println(tz.getDisplayName());
-		if(tz.useDaylightTime()) {
-			System.out.println("夏時間を採用しています");
-		} else {
-			System.out.println("夏時間を採用していません");
-		}
-		System.out.println("世界標準時間との時差は");
-		System.out.println(tz.getRawOffset() / 3600000 + "時間");
+		Class<?> info1 = String.class;
+		System.out.println(info1.getSimpleName());
+		System.out.println(info1.getName());
+		System.out.println(info1.getPackage().getName());
+		System.out.println(info1.isArray());
+		Class<?> info2 = info1.getSuperclass();
+		System.out.println(info2.getName());
+		Class<?> info3 = args.getClass();
+		System.out.println(info3.isArray());
 	}
 }
