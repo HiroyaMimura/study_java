@@ -1,13 +1,20 @@
 package study;
 
+import java.util.Iterator;
+import java.util.Properties;
+
 public class Main {
 	public static void main(String[] args) throws Exception {
-		System.out.println("計算を開始します");
-		//何らかの処理
-		System.out.println("計算終了。結果をメモ帳で表示します");
-		ProcessBuilder pb = new ProcessBuilder(
-				"c:¥¥windows¥¥system32¥¥notepad.exe",
-				"calcreport.txt");
-		pb.start();
+		System.out.println("利用中のjavaバージョン");
+		System.out.println(System.getProperty("java.version"));
+
+		Properties p = System.getProperties();
+		Iterator<String> i = p.stringPropertyNames().iterator();
+		System.out.println("システムプロパティ一覧");
+		while(i.hasNext()) {
+			String key = i.next();
+			System.out.print(key + " = ");
+			System.out.println(System.getProperty(key));
+		}
 	}
 }
