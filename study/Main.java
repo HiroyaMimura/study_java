@@ -1,20 +1,18 @@
 package study;
 
 import java.io.FileReader;
-
-import org.apache.commons.csv.CSVFormat;
-import org.apache.commons.csv.CSVRecord;
+import java.util.Properties;
 
 public class Main {
 	public static void main(String[] args) throws Exception {
-		FileReader fr = new FileReader("rpgdata.csv");
-		Iterable<CSVRecord> records = CSVFormat.DEFAULT.parse(fr);
-		for(CSVRecord r : records) {
-			String name = r.get(0);
-			String hp = r.get(1);
-			String mp = r.get(2);
-			System.out.println(name + "/" + hp + "/" + mp);
-		}
+		FileReader fr = new FileReader("c:¥¥rgpdata.prorerties");
+		Properties p = new Properties();
+		p.load(fr);
+		String name = p.getProperty("heroName");
+		String strHp = p.getProperty("heroHp");
+		int hp = Integer.parseInt(strHp);
+		System.out.println("勇者の名前：" + name);
+		System.out.println("勇者のHP：" + hp);
 		fr.close();
 	}
 }
