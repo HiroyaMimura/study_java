@@ -1,21 +1,32 @@
 package practice;
-import java.util.List;
-import java.util.function.IntPredicate;
+import java.io.BufferedOutputStream;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.zip.GZIPOutputStream;
 
 public class Main {
 	public static void main(String[] args) {
-		List<String> names = List.of("湊雄輔", "朝香あゆみ", "菅原拓真", "大江岳人");
-		names.stream()
-		.filter(n -> n.length() <= 4)
-		.map(n -> n + "さん")
-		.forEach(System.out::println);
-
-		IntPredicate f1 = x -> x % 2 == 1;
-
-		Func2 f2 = (point, name) -> {
-			return name + "さんは" + ( point > 65 ? "合格" : "不合格");
-		};
-		System.out.println(f1.test(15));
-		System.out.println(f2.call(66, "Smith"));
+		if(args.length != 2) {
+			System.out.println("起動パラメータの指定が不正です");
+			return;
+		}
+		String inFile = args[0];
+		String outFile = args[1];
+		try (
+			FileInputStream fis = new FileInputStream(inFile);
+			FileOutputStream fos = new FileOutputStream(outFile);
+			BufferedOutputStream bos = new BufferedOutputStream(fos);
+			GZIPOutputStream gzos = new GZIPOutputStream(bos);
+		) {
+			int i = fis.read();
+			while(i != -1) {
+				gzos.write(i);
+				i = fis.read();
+			}
+			gzos.flush();
+		} catch(IOException e) {
+			System.out.println("ファイル処理に失敗しました");
+		}
 	}
 }
