@@ -9,5 +9,6 @@
 	<classpathentry kind="lib" path="commons-lang3-3.12.0.jar"/>
 	<classpathentry kind="lib" path="log4j-1.2-api-2.12.4.jar"/>
 	<classpathentry kind="lib" path="log4j-core-2.12.4.jar"/>
+	<classpathentry kind="lib" path="commons-csv-1.10.0.jar"/>
 	<classpathentry kind="output" path=""/>
 </classpath>
