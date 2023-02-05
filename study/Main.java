@@ -1,34 +1,17 @@
 package study;
 
-import java.io.FileInputStream;
-import java.io.InputStream;
+import java.io.File;
 
-import javax.xml.parsers.DocumentBuilderFactory;
-
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.NodeList;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class Main {
 	public static void main(String[] args) throws Exception {
-		InputStream is = new FileInputStream("rpgsave.xml");
-		Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(is);
-			Element hero = doc.getDocumentElement();
-			Element weapon = findChildByTag(hero, "weapon");
-			Element power = findChildByTag(weapon, "power");
-			String value = power.getTextContent();
-	}
-	static Element findChildByTag(Element self, String name)
-		throws Exception {
-		NodeList children = self.getChildNodes();
-		for(int i = 0; i < children.getLength(); i++) {
-			if(children.item(i) instanceof Element) {
-			Element e = (Element)children.item(i);
-			if(e.getTagName().equals(name)) {
-				return e;
-			}
-		}
-	}
-	return null;
+		ObjectMapper mapper = new ObjectMapper();
+		JsonNode root = mapper.readTree(new File("hero.json"));
+		JsonNode hero = root.get("hero");
+		JsonNode weapon = hero.get("weapon");
+		System.out.println("名前：" + hero.get("name").textValue());
+		System.out.println("武器：" + weapon.get("name").textValue());
 	}
 }
