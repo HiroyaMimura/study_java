@@ -1,12 +1,16 @@
 package study;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class Main {
 	public static void main(String[] args) throws Exception {
-		ResourceBundle rb = ResourceBundle.getBundle(
-				"jp.miyabilink.rpg.rpgdata");
-		String heroName = rb.getString("heroName");
-		System.out.println("勇者の名前：" + heroName);
+		Locale loc = Locale.getDefault();
+		System.out.println(loc.getCountry() + "-" + loc.getLanguage());
+		String now = (new SimpleDateFormat()).format(new Date());
+		ResourceBundle rb = ResourceBundle.getBundle("messages");
+		System.out.println(rb.getString("CURRENT_TIME_IS") + now);
 	}
 }
