@@ -1,17 +1,14 @@
 package study;
 
-import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Reader;
+import java.io.StringReader;
 
 public class Main {
-	public static void main(String[] args) {
-		try (
-			FileWriter fw = new FileWriter("rpgsave.dat", true);
-		) {
-			fw.write('A');
-			fw.flush();
-		} catch(IOException e) {
-			System.out.println("ファイル書き込みエラーです");
-		}
+	public static void main(String[] args) throws IOException {
+		String msg = "第一土曜日は資源ゴミの回収です";
+		Reader sr = new StringReader(msg);
+		System.out.print((char)sr.read());
+		System.out.print((char)sr.read());
 		}
 }
