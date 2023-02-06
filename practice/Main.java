@@ -1,20 +1,22 @@
 package practice;
 
 import java.io.FileOutputStream;
-import java.io.ObjectOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.URL;
 
 public class Main {
 	public static void main(String[] args) throws Exception {
-		Employee tanaka = new Employee();
-		tanaka.name = "田中一郎";
-		tanaka.age = 41;
-		Department soumubu = new Department();
-		soumubu.name = "総務部";
-		soumubu.leader = tanaka;
-		FileOutputStream fos = new FileOutputStream("company.dat");
-		ObjectOutputStream oos = new ObjectOutputStream(fos);
-		oos.writeObject(soumubu);
-		oos.flush();
-		oos.close();
+		URL url = new URL("https://dokojava.jp/favicon.ico");
+		InputStream is = url.openStream();
+		OutputStream os = new FileOutputStream("dj.ico");
+		int i = is.read();
+		while (i != -1) {
+			os.write((byte)i);
+			i = is.read();
+		}
+		is.close();
+		os.flush();
+		os.close();
 	}
 }
