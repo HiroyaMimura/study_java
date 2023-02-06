@@ -1,37 +1,16 @@
 package study;
 
+import java.awt.image.BufferedImage;
 import java.io.File;
-import java.util.Scanner;
+import java.io.FileOutputStream;
 
-import javax.sound.midi.MidiSystem;
-import javax.sound.midi.Sequencer;
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
+import javax.imageio.ImageIO;
 
 public class Main {
 	public static void main(String[] args) throws Exception {
-		Sequencer seq =  MidiSystem.getSequencer();
-		seq.open();
-		seq.setSequence(MidiSystem.getSequence(new File("xmas-bgm.mid")));
-		seq.setLoopCount(-1);
-		seq.start();
-
-		AudioInputStream ais = AudioSystem.getAudioInputStream(new File("xmas-bell.wav"));
-		Clip clip = AudioSystem.getClip();
-		clip.open();
-
-		System.out.println("メリークリスマス！");
-		System.out.println("何か入力すると3回だけベルが鳴るよ");
-
-		for(int i = 0; i < 4; i++) {
-			new Scanner(System.in).nextLine();
-			clip.start();
-			clip.setFramePosition(0);
+		BufferedImage image = ImageIO.read(new File("minato.jpg"));
+		try(FileOutputStream fos = new FileOutputStream("minato.png")) {
+			ImageIO.write(image, "png", fos);
 		}
-		clip.stop();
-		ais.close();
-		seq.stop();
-		seq.close();
 	}
 }

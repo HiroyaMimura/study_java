@@ -1,32 +1,20 @@
 package practice;
-import java.io.BufferedOutputStream;
-import java.io.FileInputStream;
+
 import java.io.FileOutputStream;
-import java.io.IOException;
-import java.util.zip.GZIPOutputStream;
+import java.io.ObjectOutputStream;
 
 public class Main {
-	public static void main(String[] args) {
-		if(args.length != 2) {
-			System.out.println("起動パラメータの指定が不正です");
-			return;
-		}
-		String inFile = args[0];
-		String outFile = args[1];
-		try (
-			FileInputStream fis = new FileInputStream(inFile);
-			FileOutputStream fos = new FileOutputStream(outFile);
-			BufferedOutputStream bos = new BufferedOutputStream(fos);
-			GZIPOutputStream gzos = new GZIPOutputStream(bos);
-		) {
-			int i = fis.read();
-			while(i != -1) {
-				gzos.write(i);
-				i = fis.read();
-			}
-			gzos.flush();
-		} catch(IOException e) {
-			System.out.println("ファイル処理に失敗しました");
-		}
+	public static void main(String[] args) throws Exception {
+		Employee tanaka = new Employee();
+		tanaka.name = "田中一郎";
+		tanaka.age = 41;
+		Department soumubu = new Department();
+		soumubu.name = "総務部";
+		soumubu.leader = tanaka;
+		FileOutputStream fos = new FileOutputStream("company.dat");
+		ObjectOutputStream oos = new ObjectOutputStream(fos);
+		oos.writeObject(soumubu);
+		oos.flush();
+		oos.close();
 	}
 }
