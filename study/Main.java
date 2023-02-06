@@ -1,24 +1,16 @@
 package study;
 
-import java.io.FileOutputStream;
-import java.io.OutputStream;
-
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import java.io.IOException;
+import java.util.Collections;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipFile;
 
 public class Main {
-	public static void main(String[] args) throws Exception {
-		Workbook book = new XSSFWorkbook();
-		Sheet sheet = book.createSheet("カート");
-		Row row = sheet.createRow(0);
-		row.createCell(0).setCellValue("ひのきの棒");
-		row.createCell(1).setCellValue(5);
-		row.createCell(2).setCellValue(22);
-		row.createCell(3).setCellFormula("=B1*C1");
-		try(OutputStream file = new FileOutputStream("workbook.xlsx")) {
-			book.write(file);
+	public static void main(String[] args) throws IOException {
+		try(ZipFile file = new ZipFile("rpg.jar")) {
+			for(ZipEntry e : Collections.list(file.entries())) {
+				System.out.println(e.getName() + "size=" + e.getCompressedSize());
+			}
 		}
 	}
 }
