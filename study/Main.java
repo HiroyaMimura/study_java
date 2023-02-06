@@ -1,21 +1,24 @@
 package study;
 
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.OutputStream;
+
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class Main {
 	public static void main(String[] args) throws Exception {
-		Hero hero1 = new Hero("ミナト", 75, 18);
-		FileOutputStream fos = new FileOutputStream("rpgsave.dat");
-		ObjectOutputStream oos = new ObjectOutputStream(fos);
-		oos.writeObject(hero1);
-		oos.flush();
-		oos.close();
-		FileInputStream fis = new FileInputStream("rpgsave.dat");
-		ObjectInputStream ois = new ObjectInputStream(fis);
-		Hero hero2 = (Hero)ois.readObject();
-		ois.close();
+		Workbook book = new XSSFWorkbook();
+		Sheet sheet = book.createSheet("カート");
+		Row row = sheet.createRow(0);
+		row.createCell(0).setCellValue("ひのきの棒");
+		row.createCell(1).setCellValue(5);
+		row.createCell(2).setCellValue(22);
+		row.createCell(3).setCellFormula("=B1*C1");
+		try(OutputStream file = new FileOutputStream("workbook.xlsx")) {
+			book.write(file);
+		}
 	}
 }
