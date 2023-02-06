@@ -1,16 +1,20 @@
 package study;
 
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.FileOutputStream;
-
-import javax.imageio.ImageIO;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.URL;
 
 public class Main {
-	public static void main(String[] args) throws Exception {
-		BufferedImage image = ImageIO.read(new File("minato.jpg"));
-		try(FileOutputStream fos = new FileOutputStream("minato.png")) {
-			ImageIO.write(image, "png", fos);
+	public static void main(String[] args) throws IOException {
+		URL url = new URL("https://dokojava.jp");
+		InputStream is = url.openStream();
+		InputStreamReader isr = new InputStreamReader(is);
+		int i = isr.read();
+		while(i != -1) {
+			System.out.println((char)i);
+			i = isr.read();
 		}
+		isr.close();
 	}
 }
