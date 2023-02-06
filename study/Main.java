@@ -1,14 +1,21 @@
 package study;
 
-import java.io.File;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
 public class Main {
 	public static void main(String[] args) throws Exception {
-		ObjectMapper mapper = new ObjectMapper();
-		JsonFileData file = mapper.readValue(new File("hero.json"), JsonFileData.class);
-		System.out.println("名前：" + file.hero.name);
-		System.out.println("武器：" + file.hero.weapon.name);
+		Hero hero1 = new Hero("ミナト", 75, 18);
+		FileOutputStream fos = new FileOutputStream("rpgsave.dat");
+		ObjectOutputStream oos = new ObjectOutputStream(fos);
+		oos.writeObject(hero1);
+		oos.flush();
+		oos.close();
+		FileInputStream fis = new FileInputStream("rpgsave.dat");
+		ObjectInputStream ois = new ObjectInputStream(fis);
+		Hero hero2 = (Hero)ois.readObject();
+		ois.close();
 	}
 }

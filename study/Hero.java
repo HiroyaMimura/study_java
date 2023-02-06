@@ -1,32 +1,14 @@
 package study;
 
-public class Hero {
-	String name;
-	int hp;
+import java.io.Serializable;
 
-	public Hero() {
-		this.name = "";
-	}
+public class Hero implements Serializable {
+	private String name;
+	private int hp, mp;
 
-	public Hero(String name) {
+	public Hero(String name, int hp, int mp) {
 		this.name = name;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public int getHp() {
-		return hp;
-	}
-
-	public void setHp(int hp) {
 		this.hp = hp;
+		this.mp = mp;
 	}
-
-
 }
