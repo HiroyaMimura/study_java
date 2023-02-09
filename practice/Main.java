@@ -3,6 +3,7 @@ package practice;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class Main {
@@ -15,15 +16,13 @@ public class Main {
 		Connection con = null;
 		try {
 			con = DriverManager.getConnection("jdbc:h2:~/mydb");
-			PreparedStatement pstmt = con.prepareStatement("DELETE FROM MONSTERS WHERE HP <= OR NAME = ?");
+			PreparedStatement pstmt = con.prepareStatement("SELECT * FROM MONSTERS WHERE HP >= ?");
 			pstmt.setInt(1,10);
-			pstmt.setString(2, "ゾンビ");
-			int r = pstmt.executeUpdate();
-			if(r != 0) {
-				System.out.println(r + "件のモンスターを削除しました");
-			} else {
-				System.out.println("該当するモンスターはありませんでした");
+			ResultSet rs = pstmt.executeQuery();
+			while(rs.next()) {
+				System.out.println(rs.getString("NAME"));
 			}
+			rs.close();
 			pstmt.close();
 		} catch(SQLException e) {
 			e.printStackTrace();
