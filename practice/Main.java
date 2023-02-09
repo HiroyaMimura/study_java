@@ -16,11 +16,13 @@ public class Main {
 		Connection con = null;
 		try {
 			con = DriverManager.getConnection("jdbc:h2:~/mydb");
-			PreparedStatement pstmt = con.prepareStatement("SELECT * FROM MONSTERS WHERE HP >= ?");
-			pstmt.setInt(1,10);
+			PreparedStatement pstmt = con.prepareStatement("SELECT * FROM MONSTERS WHERE NAME = ?");
+			pstmt.setString(1,"ゴブリン");
 			ResultSet rs = pstmt.executeQuery();
-			while(rs.next()) {
-				System.out.println(rs.getString("NAME"));
+			if(rs.next()) {
+				System.out.println("ゴブリンのHPは" + rs.getInt("HP"));
+			} else {
+				System.out.println("ゴブリンはありませんでした");
 			}
 			rs.close();
 			pstmt.close();
