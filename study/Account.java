@@ -1,7 +1,12 @@
 package study;
 
+/**
+ * 口座クラス
+ * このクラスは、1つの銀行口座を表します。
+ */
 public class Account {
 	 String accountNo;
+	 /** 残高 */
 	 int zandaka;
 	 AccountType accountType;
 
