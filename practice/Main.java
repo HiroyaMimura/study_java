@@ -2,8 +2,6 @@ package practice;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class Main {
@@ -16,24 +14,21 @@ public class Main {
 		Connection con = null;
 		try {
 			con = DriverManager.getConnection("jdbc:h2:~/mydb");
-			PreparedStatement pstmt = con.prepareStatement("SELECT * FROM MONSTERS WHERE NAME = ?");
-			pstmt.setString(1,"ゴブリン");
-			ResultSet rs = pstmt.executeQuery();
-			if(rs.next()) {
-				System.out.println("ゴブリンのHPは" + rs.getInt("HP"));
-			} else {
-				System.out.println("ゴブリンはありませんでした");
-			}
-			rs.close();
-			pstmt.close();
+			con.setAutoCommit(false);
+
+			con.commit();
 		} catch(SQLException e) {
-			e.printStackTrace();
+			try {
+				con.rollback();
+			} catch(SQLException e2) {
+				e2.printStackTrace();
+			}
 		} finally {
 			if(con != null) {
 				try {
 					con.close();
-				} catch(SQLException e) {
-					e.printStackTrace();
+				} catch(SQLException e3) {
+					e3.printStackTrace();
 				}
 			}
 		}
