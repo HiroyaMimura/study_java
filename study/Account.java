@@ -2,7 +2,8 @@ package study;
 
 /**
  * 口座クラス
- * このクラスは、1つの銀行口座を表します。
+ * @author 湊
+ * @see NewAccount
  */
 public class Account {
 	 String accountNo;
