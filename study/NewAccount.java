@@ -1,5 +1,7 @@
 package study;
 
+import src.main.java.Account;
+
 @SuppressWarnings("serial")
 public class NewAccount extends Account {
 	@Override

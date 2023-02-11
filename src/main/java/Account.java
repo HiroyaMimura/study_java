@@ -1,8 +1,8 @@
-package study;
+package src.main.java;
 
 public class Account {
-	String owner;
-	int zandaka;
+	public String owner;
+	public int zandaka;
 
 	public Account(String owner, int zandaka) {
 		this.owner = owner;
