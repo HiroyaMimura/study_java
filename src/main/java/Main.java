@@ -2,8 +2,8 @@ package src.main.java;
 
 public class Main {
 	public static void main(String[] args) throws Exception {
-		System.out.println("アサートにわざと失敗します");
-		assert 1 == 0;
-		System.out.println("正常終了します");
+		int age = 33;
+		assert(++age >= 20);
+		System.out.println("あなたの来年の年齢は" + age);
 	 }
 }
