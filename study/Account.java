@@ -1,7 +1,16 @@
 package study;
 
 public class Account {
-	public int transfer(Bank bank, Account dest, int ammount) {
-		return 0;
+	String owner;
+	int zandaka;
+
+	public Account(String owner, int zandaka) {
+		this.owner = owner;
+		this.zandaka = zandaka;
+	}
+
+	public void transfer(Account dest, int amount) {
+		dest.zandaka += amount;
+		zandaka -= amount;
 	}
 }
