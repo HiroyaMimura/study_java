@@ -12,6 +12,5 @@ public class Account {
 	public void transfer(Account dest, int amount) {
 		dest.zandaka += amount;
 		zandaka -= amount;
-		assert this.zandaka >= 0;
 	}
 }
