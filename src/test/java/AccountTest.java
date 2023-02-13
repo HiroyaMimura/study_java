@@ -7,12 +7,9 @@ import org.junit.jupiter.api.Test;
 import src.main.java.Account;
 
 public class AccountTest {
-	@Test public void testInstantiate() {
-		Account a = new Account("ミナト", 30000);
-		assertEquals("ミナト", a.owner);
-		assertEquals(30000, a.zandaka);
-	}
-	@Test public void transfer() {
-
+	@Test
+	public void testDeniesNegativeZandakaSet() {
+		Account a = new Account();
+		assertThrows(IllegalArgumentException.class, () -> a.setZandaka(-100));
 	}
 }

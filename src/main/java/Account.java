@@ -1,16 +1,11 @@
 package src.main.java;
 
 public class Account {
-	public String owner;
-	public int zandaka;
-
-	public Account(String owner, int zandaka) {
-		this.owner = owner;
+	private int zandaka;
+	public void setZandaka(int zandaka) {
+		if(zandaka < 0) {
+			throw new IllegalArgumentException("負の残高が設定されそうになりました");
+		}
 		this.zandaka = zandaka;
-	}
-
-	public void transfer(Account dest, int amount) {
-		dest.zandaka += amount;
-		zandaka -= amount;
 	}
 }
