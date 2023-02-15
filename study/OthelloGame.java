@@ -13,7 +13,10 @@ public class OthelloGame {
 		} else if(cpuno == 2) {
 			ai = new StrongOthelloAI();
 		} else {
-
+			System.out.println("人工知能クラスのFQCNを入力してください");
+			String fqcn = new java.util.Scanner(System.in).nextLine();
+			Class<?> clazz = Class.forName(fqcn);
+			ai = (OthelloAI)clazz.newInstance();
 		}
 		while (true) {
 			System.out.println("あなたの番：打つ場所を決めてください");
