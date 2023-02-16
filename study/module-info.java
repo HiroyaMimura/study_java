@@ -1,4 +1,3 @@
-module jp.miyabilink.rpg.framework {
-	exports jp.miyabilink.rpg;
-	exports jp.miyabilink.rpg.battle;
+module jp.miyabilink.othello.ai.minato {
+	opens jp.miyabilink.othello.ai.minato;
 }
